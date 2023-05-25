@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Registration Form</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    .outer-container {
+      height: 100vh;
+      padding-top: 50px;
+    }
+
+    .inner-container {
+      width: 60%;
+      margin: auto;
+      background-color: rgb(233,232,232);
+      padding-top: 10px;
+    }
+    .inner-container h1 {
+      text-align: center;
+    }
+    
+    .inner-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 50%;
+      margin: auto;
+      margin-top: 30px;
+    }
+
+    .inner-container form input {
+      padding: 10px 15px;
+      border-radius: 4px;
+      outline: none;
+    }
+    #btn{
+      margin-top: 30px;
+      margin-bottom: 50px;
+      background-color: rgb(51, 51, 51);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    
+
+    input[type="radio"], input[type="checkbox"] {
+      
+      width: 5%; /* Add some spacing between radio buttons and labels */
+    }
+
+    select {
+      width: 20%;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="outer-container">
+    <div class="inner-container">
+      <h1>User Registration Form</h1>
+      <form action="">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+    
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+    
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
+    
+        <label for="phone">Phone Number:</label>
+        <select id="countryCode" name="countryCode">
+          <option value="+1">+1 (USA)</option>
+          <option value="+44">+44 (UK)</option>
+          <option value="+91">+91 (IND)</option>
+        </select>
+        <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required>
+    
+        <label for="sex">Sex:</label>
+        <input type="radio" id="male" name="gender" value="male"><label for="male">Male</label>
+    
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label><br>
+        <label for="dob">Date of Birth:</label>
+        <select id="day" name="day" required></select>
+        <select id="month" name="month" required></select>
+        <select id="year" name="year" required></select>
+    
+        <label for="languages">Languages Known:</label>
+        <input type="checkbox" id="english" name="languages[]" value="English">
+        <label for="english">English</label>
+        <input type="checkbox" id="marathi" name="languages[]" value="Marathi">
+        <label for="marathi">Marathi</label>
+        <input type="checkbox" id="hindi" name="languages[]" value="Hindi">
+        <label for="hindi">Hindi</label>
+        <input type="checkbox" id="tamil" name="languages[]" value="Tamil">
+        <label for="tamil">Tamil</label>
+    
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" cols="50"></textarea>
+    
+        <input id="btn" type="submit" value="Register">
+      </form>
+    </div>
+  </div>
+  
+
+  <script>
+    // Generate options for day select element
+    var daySelect = document.getElementById("day");
+    for (var i = 1; i <= 31; i++) {
+      var option = document.createElement("option");
+      option.value = i;
+      option.text = i;
+      daySelect.appendChild(option);
+    }
+
+    // Generate options for month select element
+    var monthSelect = document.getElementById("month");
+    var months = [
+      'January', 'February', 'March', 'April',
+      'May', 'June', 'July', 'August',
+      'September', 'October', 'November', 'December'
+    ];
+    for (var i = 0; i < months.length; i++) {
+      var option = document.createElement("option");
+      option.value = i + 1;
+      option.text = months[i];
+      monthSelect.appendChild(option);
+    }
+
+    // Generate options for year select element
+    var yearSelect = document.getElementById("year");
+    var currentYear = new Date().getFullYear();
+    for (var i = currentYear - 100; i <= currentYear; i++) {
+      var option = document.createElement("option");
+      option.value = i;
+      option.text = i;
+      yearSelect.appendChild(option);
+    }
+  </script>
+</body>
+</html>
